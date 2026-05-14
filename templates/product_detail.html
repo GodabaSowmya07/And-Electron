@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }} - AND ELECTRON{% endblock %}
+
+{% block content %}
+<header class="product-header">
+    <div class="header-container">
+        <div class="left-section">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+            </div>
+            <div class="header-text">
+                <h1>AND ELECTRON</h1>
+                <p>{{ product.name }}</p>
+            </div>
+        </div>
+        <nav class="nav-right">
+            <a href="/">Home</a>
+            <a href="/#products">Products</a>
+            <a href="/#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<section class="product-hero">
+    <div class="container">
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.full_desc }}</p>
+    </div>
+</section>
+
+<section class="product-details">
+    <div class="container">
+        {% for detail in product.details %}
+        <div class="detail-block">
+            <div class="detail-image">
+                <!-- <img src="{{ url_for('static', filename='images/' + detail.image) }}" alt="{{ detail.title }}"> -->
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="{{ detail.title }}">
+            </div>
+            <div class="detail-content">
+                <h2>{{ detail.title }}</h2>
+                <ul>
+                    {% for point in detail.content %}
+                    <li><i class="fas fa-check-circle"></i> {{ point }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <div class="inquiry-box">
+            <h3>Need more information?</h3>
+            <p>Contact our experts for pricing, specifications, and installation support</p>
+            <div class="inquiry-buttons">
+                <a href="tel:+919490663008" class="call-btn"><i class="fas fa-phone"></i> Call Now</a>
+                <a href="/#contact" class="email-btn"><i class="fas fa-envelope"></i> Send Inquiry</a>
+            </div>
+        </div>
+        
+        <div class="back-button">
+            <a href="/#products" class="back-btn"><i class="fas fa-arrow-left"></i> Back to All Products</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-bottom">
+        <p>&copy; 2026 AND ELECTRON. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<style>
+    .product-hero {
+        background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+    }
+    .product-hero h1 {
+        font-size: 48px;
+        color: #e11d48;
+        margin-bottom: 20px;
+    }
+    .product-hero p {
+        font-size: 18px;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    .detail-block {
+        display: flex;
+        gap: 50px;
+        margin-bottom: 60px;
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .detail-block:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+    .detail-image {
+        flex: 1;
+        min-width: 250px;
+        text-align: center;
+    }
+    .detail-image img {
+        max-width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        background: #f0f0f0;
+        padding: 20px;
+    }
+    .detail-content {
+        flex: 2;
+    }
+    .detail-content h2 {
+        color: #e11d48;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+    .detail-content ul {
+        list-style: none;
+        padding: 0;
+    }
+    .detail-content li {
+        margin: 12px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .detail-content li i {
+        color: #e11d48;
+    }
+    .inquiry-box {
+        background: linear-gradient(135deg, #e11d48, #a10c32);
+        color: white;
+        text-align: center;
+        padding: 40px;
+        border-radius: 20px;
+        margin: 40px 0;
+    }
+    .inquiry-box h3 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    .inquiry-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 25px;
+        flex-wrap: wrap;
+    }
+    .call-btn, .email-btn {
+        padding: 12px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+    .call-btn {
+        background: white;
+        color: #e11d48;
+    }
+    .email-btn {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+    }
+    .call-btn:hover, .email-btn:hover {
+        transform: translateY(-3px);
+    }
+    .back-button {
+        text-align: center;
+        margin-top: 30px;
+    }
+    .back-btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background: #0a0a1a;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        transition: 0.3s;
+    }
+    .back-btn:hover {
+        background: #e11d48;
+    }
+    @media (max-width: 768px) {
+        .detail-block {
+            flex-direction: column !important;
+            padding: 20px;
+        }
+        .product-hero h1 {
+            font-size: 32px;
+        }
+    }
+</style>
+{% endblock %}
