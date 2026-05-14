@@ -1,0 +1,367 @@
+{% extends "base.html" %}
+
+{% block title %}AND ELECTRON - Powering Industries with Reliable Energy Solutions{% endblock %}
+
+{% block content %}
+<!-- Scroll to Top Button -->
+<button id="scrollTopBtn" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Header -->
+<header id="home">
+    <div class="header-container">
+        <div class="left-section">
+            <div>
+                <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+            </div>
+            <div class="header-text">
+                <h1>AND ELECTRON</h1>
+                <p>Powering Industries with Reliable Energy Solutions</p>
+            </div>
+        </div>
+        <nav class="nav-right">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#partners">Partners</a>
+            <a href="#clients">Clients</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Powering Industries<br>Since 2021</h1>
+        <p>Your trusted partner for industrial batteries, solar solutions, material handling equipment, and power backup systems.</p>
+        <a href="#products" class="hero-btn">Explore Products <i class="fas fa-arrow-right"></i></a>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <div class="container">
+        <h2>About AND ELECTRON</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>AND ELECTRON was established in <strong>2021</strong> to solve the market pain points in the battery industry, backup solutions, and renewable energy. Started by industry experts having <strong>20+ years of experience</strong>.</p>
+                <p>We are a <strong>one-stop vendor</strong> for all industrial needs of Material Handling Equipment, UPS, Power Systems, and renewable energy solutions. Our commitment to quality and customer satisfaction has made us a trusted partner for leading industries across India.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <h3>20+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat">
+                        <h3>50+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                    <div class="stat">
+                        <h3>6+</h3>
+                        <p>Product Categories</p>
+                    </div>
+                    <div class="stat">
+                        <h3>24/7</h3>
+                        <p>Customer Support</p>
+                    </div>
+                </div>
+                <a href="{{ url_for('static', filename='brochure.pdf') }}" download class="download-btn">
+                    <i class="fas fa-download"></i> Download Brochure
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section id="products">
+    <div class="container">
+        <h2>Our Products</h2>
+        <p class="section-subtitle">Comprehensive solutions for all your industrial power needs</p>
+        <div class="products-grid">
+            {% for product in products %}
+            <div class="product-card" data-id="{{ product.id }}">
+                <div class="product-icon">
+                    {% if product.id == 1 %}
+                        <i class="fas fa-car-battery"></i>
+                    {% elif product.id == 2 %}
+                        <i class="fas fa-charging-station"></i>
+                    {% elif product.id == 3 %}
+                        <i class="fas fa-solar-panel"></i>
+                    {% elif product.id == 4 %}
+                        <i class="fas fa-forklift"></i>
+                    {% elif product.id == 5 %}
+                        <i class="fas fa-database"></i>
+                    {% else %}
+                        <i class="fas fa-plug"></i>
+                    {% endif %}
+                </div>
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.short_desc }}</p>
+                <a href="/product/{{ product.id }}" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Partners Section -->
+<section id="partners">
+    <div class="container">
+        <h2>Our Partners</h2>
+        <p class="section-subtitle">Proudly associated with industry leaders</p>
+        <div class="partners-grid">
+            {% for partner in partners %}
+            <div class="partner-card">
+                <div class="partner-logo">
+                    <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+                </div>
+                <h4>{{ partner.name }}</h4>
+                <p>{{ partner.desc }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Clients Section -->
+<section id="clients">
+    <div class="container">
+        <h2>Our Clients</h2>
+        <p class="section-subtitle">Trusted by industry leaders across India</p>
+        <div class="clients-grid">
+            {% for client in clients %}
+            <div class="client-card">
+                <span>{{ client }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section id="why-us">
+    <div class="container">
+        <h2>Why Choose AND ELECTRON</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <i class="fas fa-medal"></i>
+                <h3>Industry Expertise</h3>
+                <p>20+ years of combined experience in power solutions</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-handshake"></i>
+                <h3>Authorized Partners</h3>
+                <p>Direct association with Exide, Zapi, Waaree, and more</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-certificate"></i>
+                <h3>Quality Assured</h3>
+                <p>ISO certified products with comprehensive warranties</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 Support</h3>
+                <p>Round-the-clock technical assistance and service</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-truck"></i>
+                <h3>Pan-India Delivery</h3>
+                <p>Fast and reliable delivery across all major cities</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-wrench"></i>
+                <h3>AMC Services</h3>
+                <p>Annual maintenance contracts for peace of mind</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Visit Us:</strong><br>
+                        4th Floor, Flat No 402, Sasi Residency,<br>
+                        Baba Metta Road, MIG Revenue Ward 26,<br>
+                        Vizianagaram, Andhra Pradesh - 535002
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong>Call Us:</strong><br>
+                        <a href="tel:+919490663008">+91 9490663008</a><br>
+                        <a href="tel:+919765498881">+91 9765498881</a>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email Us:</strong><br>
+                        <a href="mailto:dayalvarma@andelectron.in">dayalvarma@andelectron.in</a><br>
+                        <a href="mailto:sales@andelectron.in">sales@andelectron.in</a><br>
+                        <a href="mailto:contact@andelectron.in">contact@andelectron.in</a>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <strong>Follow Us:</strong>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Send a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="Your Message / Requirement"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                    <div id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>AND ELECTRON</h3>
+            <p>Powering Industries with Reliable Energy Solutions since 2021.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Products</h4>
+            <ul>
+                <li><a href="/product/1">Industrial Batteries</a></li>
+                <li><a href="/product/2">Charging Solutions</a></li>
+                <li><a href="/product/3">Solar Systems</a></li>
+                <li><a href="/product/4">MHE</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Business Hours</h4>
+            <p>Monday - Saturday: 9:00 AM - 6:00 PM<br>Sunday: Closed</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 AND ELECTRON. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Scroll to top button
+    const btn = document.getElementById("scrollTopBtn");
+    window.onscroll = function() {
+        if (document.documentElement.scrollTop > 300) {
+            btn.style.display = "flex";
+        } else {
+            btn.style.display = "none";
+        }
+    };
+    
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+    
+    // Contact form submission
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const messageDiv = document.getElementById('formMessage');
+        
+        messageDiv.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        messageDiv.style.color = '#e11d48';
+        
+        try {
+            const response = await fetch('/contact', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            
+            if (data.status === 'success') {
+                messageDiv.innerHTML = '<i class="fas fa-check-circle"></i> ' + data.message;
+                messageDiv.style.color = '#10b981';
+                this.reset();
+                setTimeout(() => {
+                    messageDiv.innerHTML = '';
+                }, 5000);
+            } else {
+                messageDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + data.message;
+                messageDiv.style.color = '#ef4444';
+            }
+        } catch (error) {
+            messageDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> Something went wrong. Please try again.';
+            messageDiv.style.color = '#ef4444';
+        }
+    });
+    
+    // Download brochure
+    document.getElementById('downloadBrochure').addEventListener('click', function() {
+        alert('Brochure download will start shortly. For immediate assistance, please call +91 9490663008');
+        // Create a text version of the brochure
+        const brochureContent = `AND ELECTRON - Company Brochure\n\nContact: +91 9490663008\nEmail: sales@andelectron.in\nAddress: Vizianagaram, Andhra Pradesh - 535002\n\nProducts: Industrial Batteries, Zapi & Chloride Chargers, Solar Power Systems, Material Handling Equipment, Data Center Batteries, Power Backup Solutions.`;
+        const blob = new Blob([brochureContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'AND_ELECTRON_Brochure.txt';
+        a.click();
+        URL.revokeObjectURL(url);
+    });
+    
+    // Mobile menu toggle
+    document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
+        document.querySelector('.nav-right').classList.toggle('active');
+    });
+</script>
+{% endblock %}
